@@ -1,3 +1,5 @@
+import { ProductoService } from './producto.service';
+import { CategoriaService } from './categoria.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,6 +8,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database'; //importado 
 import { AngularFireAuthModule } from '@angular/fire/auth'; //importado al inicio
 import { RouterModule } from '@angular/router'
 import {NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import {FormsModule } from '@angular/forms'   //lo importe cuando se hizo uso en html de ngModel
+import { CustomFormsModule } from 'ng2-validation' //importado de la libreria ng2-validation
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -19,6 +23,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { NuevoproductoComponent } from './nuevoproducto/nuevoproducto.component';
 
 
 
@@ -34,7 +39,8 @@ import { LoginComponent } from './login/login.component';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductsComponent
+    ProductsComponent,
+    NuevoproductoComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,8 @@ import { LoginComponent } from './login/login.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
+    FormsModule,
+    CustomFormsModule,
     RouterModule.forRoot([
       { path:'', component: HomeComponent },
       { path:'my/orders', component: MyOrdersComponent },
@@ -51,11 +59,14 @@ import { LoginComponent } from './login/login.component';
       { path:'order-success', component: OrderSuccessComponent },
       { path:'login', component:LoginComponent},
       { path:'admin/products', component:AdminProductsComponent},
-      { path:'admin/orders', component:AdminOrdersComponent}
-
+      { path:'admin/orders', component:AdminOrdersComponent},
+      {path:'nuevoproducto', component:NuevoproductoComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    CategoriaService,
+    ProductoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

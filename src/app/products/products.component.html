@@ -1,1 +1,20 @@
-<p>products works!</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> Titulo </th>
+            <th> Precio </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of productos$ | async">
+            <td> {{p.title}}</td>
+            <td>{{p.price}}</td>
+            <td>
+                <a [routerLink]="['/productos/', p.name]"> edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

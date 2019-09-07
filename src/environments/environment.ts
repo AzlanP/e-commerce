@@ -11,7 +11,7 @@ export const environment = {
     projectId: "e-commerce-3c1b9",
     storageBucket: "",
     messagingSenderId: "747429220162",
-    appId: "1:747429220162:web:351d33ea41c8db14"
+    appId: "1:747429220162:web:f0517dc8e982a1596542db"
   }
 };
 
