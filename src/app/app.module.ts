@@ -23,7 +23,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
-import { NuevoproductoComponent } from './nuevoproducto/nuevoproducto.component';
+import { FormularioproductoComponent } from './admin/formularioproducto/formularioproducto.component';
 
 
 
@@ -40,7 +40,7 @@ import { NuevoproductoComponent } from './nuevoproducto/nuevoproducto.component'
     AdminOrdersComponent,
     LoginComponent,
     ProductsComponent,
-    NuevoproductoComponent
+    FormularioproductoComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +58,10 @@ import { NuevoproductoComponent } from './nuevoproducto/nuevoproducto.component'
       { path:'check-out', component: CheckOutComponent },
       { path:'order-success', component: OrderSuccessComponent },
       { path:'login', component:LoginComponent},
-      { path:'admin/products', component:AdminProductsComponent},
+      { path:'admin/productos', component:AdminProductsComponent},
       { path:'admin/orders', component:AdminOrdersComponent},
-      {path:'nuevoproducto', component:NuevoproductoComponent}
+      {path:'admin/productos/nuevo', component:FormularioproductoComponent},
+      {path:'admin/productos/:id', component:FormularioproductoComponent}
     ])
   ],
   providers: [
