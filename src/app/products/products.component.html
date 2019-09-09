@@ -1,0 +1,18 @@
+
+<div class="row">
+    <div class="col-3">
+      <filtro-productos [category]="category"></filtro-productos>
+    </div>
+    <div class="col">
+      <div class="row">
+          <ng-container *ngFor="let p of filteredProducts; let i = index">
+            <div class="col">
+                <card-producto [product]="p" [shopping-cart]="cart"></card-producto>
+            </div>
+            <div *ngIf="(i+1) % 2 === 0" class="w-100"></div>
+          </ng-container>
+        </div>
+    </div>
+  </div>
+  
+  

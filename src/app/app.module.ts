@@ -1,5 +1,9 @@
-import { ProductoService } from './producto.service';
-import { CategoriaService } from './categoria.service';
+import { UserService } from './servicios/user.service';
+import { AuthGuard } from 'src/app/servicios/auth-guard.service';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { CarritoService } from './servicios/carrito.service';
+import { ProductoService } from './servicios/producto.service';
+import { CategoriaService } from './servicios/categoria.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +14,7 @@ import { RouterModule } from '@angular/router'
 import {NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import {FormsModule } from '@angular/forms'   //lo importe cuando se hizo uso en html de ngModel
 import { CustomFormsModule } from 'ng2-validation' //importado de la libreria ng2-validation
+
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -24,6 +29,10 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { FormularioproductoComponent } from './admin/formularioproducto/formularioproducto.component';
+import { FiltroProductosComponent } from './products/filtro-productos/filtro-productos.component';
+import { CardProductoComponent } from './products/card-producto/card-producto.component';
+import { CantidadProductosComponent } from './products/cantidad-productos/cantidad-productos.component';
+
 
 
 
@@ -40,7 +49,10 @@ import { FormularioproductoComponent } from './admin/formularioproducto/formular
     AdminOrdersComponent,
     LoginComponent,
     ProductsComponent,
-    FormularioproductoComponent
+    FormularioproductoComponent,
+    FiltroProductosComponent,
+    CardProductoComponent,
+    CantidadProductosComponent
   ],
   imports: [
     BrowserModule,
@@ -51,13 +63,13 @@ import { FormularioproductoComponent } from './admin/formularioproducto/formular
     FormsModule,
     CustomFormsModule,
     RouterModule.forRoot([
-      { path:'', component: HomeComponent },
-      { path:'my/orders', component: MyOrdersComponent },
+      { path:'', component: ProductsComponent},
+      { path:'login', component:LoginComponent},
+      { path:'my/orders', component: MyOrdersComponent , canActivate: [AuthGuard] },
       { path:'products', component: ProductsComponent },
       { path:'shopping-cart', component: ShoppingCartComponent },
-      { path:'check-out', component: CheckOutComponent },
-      { path:'order-success', component: OrderSuccessComponent },
-      { path:'login', component:LoginComponent},
+      { path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
+      { path:'order-success', component: OrderSuccessComponent , canActivate: [AuthGuard]},
       { path:'admin/productos', component:AdminProductsComponent},
       { path:'admin/orders', component:AdminOrdersComponent},
       {path:'admin/productos/nuevo', component:FormularioproductoComponent},
@@ -66,7 +78,11 @@ import { FormularioproductoComponent } from './admin/formularioproducto/formular
   ],
   providers: [
     CategoriaService,
-    ProductoService
+    ProductoService,
+    CarritoService,
+    AuthService,
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

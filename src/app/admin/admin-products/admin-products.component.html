@@ -1,4 +1,51 @@
 
+<p>
+    <input
+    #query
+    (keyup)="buscar(query.value)"
+    placeholder="Buscar Producto"
+    type="text" class="form-control">
+</p>
+<!--
+
+
+<data-table
+[items]="items"
+[itemCount]="itemCount"
+(reload)=reloadItems($event)
+>
+<data-table-column 
+[property]="'title'"
+[header]="'Titulo'"
+[sortable]="true"
+[resizable]="true"
+>   
+
+</data-table-column>
+
+<data-table-column 
+[property]="'price'"
+[header]="'Precio Unitario'"
+[sortable]="true"
+[resizable]="true"
+>   
+<ng-templante  #dataTableCell let-item="producto"  > 
+    {{ producto.price | currency:"ARS":’symbol-narrow’}}
+</ng-templante>
+</data-table-column>
+
+
+<data-table-column 
+[property]="'key'"
+[header]="'Editar'"
+>   
+<ng-templante  #dataTableCell let-item="producto"  > 
+        <a [routerLink]="['/admin/productos/', p.key]"> edit</a>
+</ng-templante>
+</data-table-column>
+
+</data-table>
+-->
 <table class="table">
         <thead>
             <tr>
@@ -8,7 +55,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of productos$ | async">
+            <tr *ngFor="let p of productosFiltrados">
                 <td> {{p.title}}</td>
                 <td>{{p.price}}</td>
                 <td>

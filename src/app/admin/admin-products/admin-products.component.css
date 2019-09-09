@@ -1,0 +1,15 @@
+table{
+    border: 1px solid grey;
+    width: 70%;
+    
+
+}
+tr td{
+    border: 1px solid grey
+
+}
+tr th{
+    border: 1px solid grey;
+    text-align: center;
+
+}
